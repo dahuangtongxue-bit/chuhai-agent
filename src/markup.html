@@ -1,0 +1,170 @@
+<!-- 敲门层：设了访问码才出现 -->
+<div id="door" class="door" hidden>
+  <div class="door-card">
+    <div class="door-icon">⛵</div>
+    <h1>领航 · 出海营销助手</h1>
+    <p class="door-sub">宁商巡演项目组 · 运营方 寰亚数据</p>
+    <p class="door-tip">本站仅向受邀企业开放，请输入访问码</p>
+    <div class="door-row">
+      <input id="door-code" type="password" inputmode="numeric" placeholder="访问码" autocomplete="off">
+      <button id="door-go" class="btn btn-primary" type="button">上船</button>
+    </div>
+    <p id="door-err" class="door-err" hidden></p>
+  </div>
+</div>
+
+<!-- 主应用 -->
+<div id="main" hidden>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-brand">
+        <span class="hero-logo">⛵</span>
+        <div>
+          <h1>领航</h1>
+          <p class="hero-tag">宁商巡演 · 企业出海营销助手</p>
+        </div>
+      </div>
+      <p class="hero-sub">帮鼓楼企业站上世界舞台 —— 体检 → 匹配巡演 → 生成物料 → 市场锦囊</p>
+      <div class="hero-badge">运营方：寰亚数据 · 宁商巡演项目组</div>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab on" data-tab="diagnose" type="button"><i>1</i>出海体检</button>
+    <button class="tab" data-tab="match" type="button"><i>2</i>巡演匹配</button>
+    <button class="tab" data-tab="materials" type="button"><i>3</i>物料工坊</button>
+    <button class="tab" data-tab="insights" type="button"><i>4</i>市场锦囊</button>
+    <button class="tab" data-tab="chat" type="button"><i>💬</i>问领航</button>
+  </nav>
+
+  <main class="wrap">
+
+    <!-- ============ Tab 1 出海体检 ============ -->
+    <section id="tab-diagnose" class="pane">
+      <div class="card">
+        <h2>出海体检</h2>
+        <p class="hint">填一份企业画像，领航给出准备度评分、短板和 30/60/90 天行动清单，后面三步都靠它。</p>
+        <div class="grid2">
+          <label class="field"><span>企业名称</span><input id="f-name" type="text" placeholder="如：南京××智能装备有限公司"></label>
+          <label class="field"><span>所在行业</span>
+            <select id="f-industry">
+              <option>智能制造</option><option>软件与信息服务</option><option>生物医药</option>
+              <option>新能源与节能环保</option><option>消费品牌</option><option>文化创意</option>
+              <option>跨境电商</option><option>汽车零部件</option><option>食品饮料</option><option>其他</option>
+            </select>
+          </label>
+          <label class="field span2"><span>主营产品 / 服务（一句话）</span><input id="f-product" type="text" placeholder="如：工业级 3D 打印设备与打印服务"></label>
+          <label class="field"><span>企业规模</span>
+            <select id="f-size"><option>初创（0-20 人）</option><option>中小（20-200 人）</option><option>规上（200 人以上）</option></select>
+          </label>
+          <label class="field"><span>年营收区间</span>
+            <select id="f-revenue"><option>500 万以下</option><option>500 万 - 2000 万</option><option>2000 万 - 1 亿</option><option>1 亿以上</option></select>
+          </label>
+          <label class="field"><span>出海经验</span>
+            <select id="f-exp"><option>还没有</option><option>参观过海外展会</option><option>有过出口订单</option><option>已有海外客户</option></select>
+          </label>
+          <label class="field"><span>外语 / 外贸能力</span>
+            <select id="f-lang"><option>较弱</option><option>一般</option><option>有外贸团队</option></select>
+          </label>
+          <div class="field span2"><span>已有认证（多选）</span>
+            <div class="chips" id="f-certs">
+              <button type="button" data-v="CE">CE（欧盟）</button>
+              <button type="button" data-v="UL">UL（北美）</button>
+              <button type="button" data-v="FDA">FDA（美国食药）</button>
+              <button type="button" data-v="ISO9001">ISO9001</button>
+              <button type="button" data-v="无">暂无</button>
+            </div>
+          </div>
+          <label class="field span2"><span>意向市场（可不填，让领航推荐）</span><input id="f-market" type="text" placeholder="如：德国 / 迪拜"></label>
+        </div>
+        <div class="row-end">
+          <button id="btn-diagnose" class="btn btn-primary" type="button">开始体检</button>
+        </div>
+      </div>
+      <div id="diagnosis-result"></div>
+    </section>
+
+    <!-- ============ Tab 2 巡演匹配 ============ -->
+    <section id="tab-match" class="pane" hidden>
+      <div id="match-guard" class="empty" hidden>
+        <p>先完成「出海体检」，匹配才准。</p>
+        <button class="btn btn-ghost jump-diagnose" type="button">去做体检</button>
+      </div>
+      <div id="match-body" hidden>
+        <div class="card">
+          <h2>宁商巡演 · 站点库</h2>
+          <p class="hint">寰亚数据中标运营的出海路演项目，组织鼓楼企业分批赴海外参展、对接、考察。点击「智能匹配」，领航按企业画像挑出最值得去的 3 站。</p>
+          <div class="row-end">
+            <button id="btn-match" class="btn btn-primary" type="button">智能匹配</button>
+          </div>
+        </div>
+        <div id="picks-result"></div>
+        <div class="card">
+          <h3 class="h-plain">全部站点</h3>
+          <div id="stops-list" class="stops"></div>
+          <p class="fine">站点为示例排期，正式团期与报名以寰亚数据通知为准。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Tab 3 物料工坊 ============ -->
+    <section id="tab-materials" class="pane" hidden>
+      <div id="mat-guard" class="empty" hidden>
+        <p>先完成「出海体检」，物料才贴身。</p>
+        <button class="btn btn-ghost jump-diagnose" type="button">去做体检</button>
+      </div>
+      <div id="mat-body" hidden>
+        <div class="card">
+          <h2>路演物料工坊</h2>
+          <p class="hint">按企业画像 + 所选站点，一次生成一页纸英文简介、30 秒电梯 pitch、展台话术 FAQ、展前展中展后社媒文案。</p>
+          <label class="field"><span>本次路演站点</span><select id="mat-stop"></select></label>
+          <div class="row-end">
+            <button id="btn-materials" class="btn btn-primary" type="button">生成物料包</button>
+          </div>
+          <p id="mat-status" class="fine" hidden></p>
+        </div>
+        <div id="materials-result"></div>
+      </div>
+    </section>
+
+    <!-- ============ Tab 4 市场锦囊 ============ -->
+    <section id="tab-insights" class="pane" hidden>
+      <div class="card">
+        <h2>市场锦囊</h2>
+        <p class="hint">第一次去这个市场？礼仪、禁忌、认证、渠道、收款，一页讲清。</p>
+        <div class="chips" id="ins-countries"></div>
+        <div class="row-end">
+          <button id="btn-insights" class="btn btn-primary" type="button">生成锦囊</button>
+        </div>
+      </div>
+      <div id="insights-result"></div>
+    </section>
+
+    <!-- ============ Tab 5 问领航 ============ -->
+    <section id="tab-chat" class="pane" hidden>
+      <div class="card card-chat">
+        <div id="chat-log" class="chat-log"></div>
+        <div class="chat-row">
+          <input id="chat-input" type="text" placeholder="问领航：如「我们第一次参展该带几个人？」">
+          <button id="chat-send" class="btn btn-primary" type="button">发送</button>
+        </div>
+        <p class="fine">领航带着你的企业画像和所选站点回答；生成内容仅供参考，正式排期以寰亚数据为准。</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <p>宁商巡演项目组 · 运营方 寰亚数据 ｜ 站点与报名清单以寰亚数据正式排期为准</p>
+    <p>内容由 AI 生成，仅供参展准备参考</p>
+  </footer>
+</div>
+
+<div id="toast" hidden></div>
+
+<style>
+/*__STYLE__*/
+</style>
+<script>
+/*__APP__*/
+</script>
